@@ -21,6 +21,9 @@ export const metadata: Metadata = {
     "retirement planning calculator",
     "retirement income calculator",
   ],
+  verification: {
+    google: "qlPMVO_Hb-be3_hFHNT9SBbsHO-b_wCOfWfLmTb4EQc",
+  },
   openGraph: {
     title: `${SITE.year} Retirement Calculator | Free`,
     description: "Plan your retirement with free calculators. Estimate savings, 401k growth, and Social Security benefits.",
