@@ -14,7 +14,7 @@ export const SITE = {
     tagline: "Free 2025 Retirement Planning Tools",
     description: "Plan your retirement with our free calculators. Estimate how much you need to save, 401k growth, Social Security benefits, and more. Easy to understand results.",
     year: 2025,
-    baseUrl: "https://retirement-calc.vercel.app",
+    baseUrl: "https://retirement.mysmartcalculators.com",
 };
 
 // ============================================
@@ -206,8 +206,8 @@ export function calculate401k(
     expectedReturn: number = 7
 ): Result401k {
     const is50Plus = currentAge >= 50;
-    const maxContribution = is50Plus 
-        ? RETIREMENT_CONSTANTS.limits401k.total50Plus 
+    const maxContribution = is50Plus
+        ? RETIREMENT_CONSTANTS.limits401k.total50Plus
         : RETIREMENT_CONSTANTS.limits401k.under50;
 
     // Your contribution (capped at IRS limit)
@@ -348,8 +348,8 @@ export function calculateSavingsGoal(
     // Monthly payment to reach goal (PMT formula)
     let monthlyNeeded = 0;
     if (amountNeeded > 0 && monthlyReturn > 0) {
-        monthlyNeeded = (amountNeeded * monthlyReturn) / 
-                       (Math.pow(1 + monthlyReturn, monthsToRetirement) - 1);
+        monthlyNeeded = (amountNeeded * monthlyReturn) /
+            (Math.pow(1 + monthlyReturn, monthsToRetirement) - 1);
     }
     monthlyNeeded = Math.round(Math.max(0, monthlyNeeded));
 
@@ -357,8 +357,8 @@ export function calculateSavingsGoal(
     const interestEarned = targetAmount - currentSavings - totalContributions;
 
     // Check if achievable (assuming max 401k + IRA contribution)
-    const maxMonthlyContribution = (RETIREMENT_CONSTANTS.limits401k.total50Plus + 
-                                    RETIREMENT_CONSTANTS.limitsIRA.total50Plus) / 12;
+    const maxMonthlyContribution = (RETIREMENT_CONSTANTS.limits401k.total50Plus +
+        RETIREMENT_CONSTANTS.limitsIRA.total50Plus) / 12;
     const isAchievable = monthlyNeeded <= maxMonthlyContribution;
 
     return {
